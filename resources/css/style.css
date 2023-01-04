@@ -1,0 +1,53 @@
+/*-*/
+/*Global Declarations*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /*Debugging*/
+    border: 1px solid rgb(209, 135, 31);
+    /*Global default font*/
+    font-family: monospace;
+}
+
+body {
+    background-color: dimgray;
+    
+}
+
+p {
+    color: white;
+    font-size: 1.4em;
+}
+
+button {
+    outline: none;
+    background-color: black;
+    color: white;
+    font-size: 1.3em;
+}
+
+/*Outer container section*/
+.outer-container {
+    padding: 10px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+/*Top bar container*/
+.top-bar p {
+    float: right;
+}
+
+/*Inner container section*/
+.inner-container {
+    background: black;
+    height: 100%;
+}
+
+/*Header Intro section*/
+
+
+/*main quiz content*/
