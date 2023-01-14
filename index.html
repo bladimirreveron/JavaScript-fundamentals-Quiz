@@ -1,34 +1,40 @@
 
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
     <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>JavaScript Fundamentals Quiz</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>JavaScript Fundamentals Quiz App</title>
         <link rel="stylesheet" href="./resources/css/style.css">
     </head>
+
     <body>
-        <!-- outer div-->
-        <div class="outer-container">
-
-            <!--top-bar section-->
-            <div class="top-bar">
-                <button>View Highscores</button>
-                <p>Timer: 00:00</p>
+        <div class="container">
+            <div class="quiz-box">
+                <div id="quiz">
+                    <h1>JavaScript Quiz App</h1>
+                    <div class="quiz-header">
+                        <p id="progress">Question x of y</p>
+                        <p id="count-down"></p>
+                    </div>
+                    <p id="question"></p>
+    
+                    <div class="buttons">
+                        <button class="btn" id="btn0">A. <span id="choice0"></span></button>
+                        <button class="btn" id="btn1">B. <span id="choice1"></span></button>
+                        <button class="btn" id="btn2">C. <span id="choice2"></span></button>
+                        <button class="btn" id="btn3">D. <span id="choice3"></span></button>
+                    </div>
+    
+                    <hr>
+                    <footer>
+                        <p></p>
+    
+                    </footer>
+                </div>
             </div>
-
-            <!--inner div-->
-            <div class="inner-container">
-                <!--main quiz intro-->
-                <header class="quiz-intro">
-
-                </header>
-                
-                <!--main quiz content-->
-                <main>
-
-                </main>
-            </div>
-        </div>
+        </div>    
+        <script src="./resources/js/script.js"></script>
     </body>
 </html>
