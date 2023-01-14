@@ -86,24 +86,24 @@ function showScores() {
 // create questions here
 let questions = [
     new Question(
-        "Hyper Text Markup Language Stands For?", 
-        ["JQuery", "XHTML","CSS", "HTML"], "HTML"
+        "Javascript is an _______ language?", 
+        ["Object-Oriented", "Object-Based","Procedural", "None of the above"], "Object-Oriented"
     ),
     new Question(
-        "Cascading Style sheet stands for?", 
-        ["HTML", "JQuery", "CSS", "XML"], "CSS"
+        "Which of the following keywords is used to define a variable in Javascript?", 
+        ["var", "let", "Both A and B", "None of the above"], "Both A and B"
     ),
     new Question(
-        "Which is a JavaScript Framework?", 
-        ["React", "Laravel","Django", "Sass"], "React"
+        "Which of the following methods is used to access HTML elements using Javascript?", 
+        ["getElementById()", "getElementByVlassName()","Both A and B", "None of the above"], "Both A and B"
         ),
     new Question(
-        "Which is a backend language?", 
-        ["PHP", "HTML", "React", "All"], "PHP"
+        "Upon encountering empty statements, what does the Javascript Interpreter do?", 
+        ["Throws an error", "Ignores the statements", "Gives a warning", "None of the above"], "Ignores the statements"
         ),
     new Question(
-        "Which is best for Artificial intelligence?", 
-        ["React", "Laravel","Python", "Sass"], "Python"
+        "Which of the following methods can be used to display data in some form using Javascript?", 
+        ["document.write()", "console.log()","window.alert()", "All of the above"], "All of the above"
         )
 ];
 
@@ -121,12 +121,12 @@ let quiz = new Quiz(questions);
 // display quiz
 displayQuestion();
 
-// Add A CountDown for the Quiz
+// Add A Timer for the Quiz
 let time = 10;
 let quizTimeInMinutes = time * 60 * 60;
 let quizTime = quizTimeInMinutes / 60;
 
-let counting = document.getElementById("count-down");
+let counting = document.getElementById("timer");
 
 function startCountdown(){
     let quizTimer = setInterval(function(){

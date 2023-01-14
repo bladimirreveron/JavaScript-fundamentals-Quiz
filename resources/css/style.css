@@ -1,145 +1,154 @@
-function Quiz(questions) {
-    this.score = 0;
-    this.questions = questions;
-    this.questionIndex = 0;
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
+
+
+:root {
+    --white: #fff;
+    --black: #1c2b2d;
+    --blue: #31326f;
+    --light-blue: #005490;
+    --color-primary: #9d0191;
+    --color-sec: #db6400;
+    --color-grey: #eee;
+    --color-dark-grey: #222831;
 }
 
-Quiz.prototype.getQuestionIndex = function() {
-    return this.questions[this.questionIndex];
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-Quiz.prototype.guess = function(answer) {
-    if(this.getQuestionIndex().isCorrectAnswer(answer)) {
-        this.score++;
-    }
-
-    this.questionIndex++;
+html {
+    font-size: 10px;
 }
 
-Quiz.prototype.isEnded = function() {
-    return this.questionIndex === this.questions.length;
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: var(--white);
 }
 
-
-function Question(text, choices, answer) {
-    this.text = text;
-    this.choices = choices;
-    this.answer = answer;
+p {
+    font-size: 1.6rem;
+    line-height: 1.5;
 }
 
-Question.prototype.isCorrectAnswer = function(choice) {
-    return this.answer === choice;
+img {
+    width: 100%;
 }
 
-
-// Displaying the question
-function displayQuestion() {
-    if(quiz.isEnded()) {
-        showScores();
-    }
-    else {
-        // show question
-        let questionElement = document.getElementById("question");
-        questionElement.innerHTML = quiz.getQuestionIndex().text;
-
-        // show options
-        let choices = quiz.getQuestionIndex().choices;
-        for(let i = 0; i < choices.length; i++) {
-            let choiceElement = document.getElementById("choice" + i);
-            choiceElement.innerHTML = choices[i];
-            guess("btn" + i, choices[i]);
-        }
-
-        showProgress();
-    }
-};
-
-function guess(id, guess) {
-    let button = document.getElementById(id);
-    button.onclick = function() {
-        quiz.guess(guess);
-        displayQuestion();
-    }
-};
-
-
-function showProgress() {
-    let currentQuestionNumber = quiz.questionIndex + 1;
-    let ProgressElement = document.getElementById("progress");
-    ProgressElement.innerHTML = 
-    `Question ${currentQuestionNumber} of ${quiz.questions.length}`;
-};
-
-function showScores() {
-    let quizEndHTML = 
-    `
-    <h1>Quiz Completed</h1>
-    <h2 id='score'> Your scored: ${quiz.score} of ${quiz.questions.length}</h2>
-    <div class="quiz-repeat">
-        <a href="index.html">Take Quiz Again</a>
-    </div>
-    `;
-    let quizElement = document.getElementById("quiz");
-    quizElement.innerHTML = quizEndHTML;
-};
-
-// create questions here
-let questions = [
-    new Question(
-        "Hyper Text Markup Language Stands For?", 
-        ["JQuery", "XHTML","CSS", "HTML"], "HTML"
-    ),
-    new Question(
-        "Cascading Style sheet stands for?", 
-        ["HTML", "JQuery", "CSS", "XML"], "CSS"
-    ),
-    new Question(
-        "Which is a JavaScript Framework?", 
-        ["React", "Laravel","Django", "Sass"], "React"
-        ),
-    new Question(
-        "Which is a backend language?", 
-        ["PHP", "HTML", "React", "All"], "PHP"
-        ),
-    new Question(
-        "Which is best for Artificial intelligence?", 
-        ["React", "Laravel","Python", "Sass"], "Python"
-        )
-];
-
-// Loop through the array and get the answers
-// questions.forEach((answer) => {
-//     console.log(answer.choice);
-//     let quizAnswers = document.getElementById("quiz-answers");
-//     // quizAnswers.innerHTML = questions.text;
-// })
-
-
-// create quiz
-let quiz = new Quiz(questions);
-
-// display quiz
-displayQuestion();
-
-// Add A CountDown for the Quiz
-let time = 10;
-let quizTimeInMinutes = time * 60 * 60;
-let quizTime = quizTimeInMinutes / 60;
-
-let counting = document.getElementById("count-down");
-
-function startCountdown(){
-    let quizTimer = setInterval(function(){
-    if(quizTime <= 0) {
-        clearInterval(quizTimer);
-        showScores();
-    } else {
-        quizTime--;
-        let sec = Math.floor(quizTime % 60);
-        let min = Math.floor(quizTime / 60) % 60;
-        counting.innerHTML = `TIME: ${min} : ${sec}`;   
-    }
-},1000);
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
-startCountdown();
+.quiz-box {
+    width: 650px;
+    /* height: 500px; */
+    margin: 0 auto;
+    background-color: #eee;
+    padding: 10px 50px 50px 50px;
+    border: 3px solid var(--color-primary);
+    border-radius: 9px;
+    
+}
+
+.quiz-box h1 {
+    background-color: var(--color-grey);
+    font-size: 3rem;
+    text-align: center;
+    color: var(--color-primary);
+    padding: 10px 0;
+    width: 100%;
+    margin-bottom: 2rem;
+    border-radius: 3px;    
+}
+
+.quiz-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.quiz-header #progress {
+    color: #2b2b2b;
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.quiz-header #timer {
+    font-size: 1.6rem;
+    font-weight: 700;
+    background-color: var(--color-primary);
+    padding: 5px;
+    margin: 1px;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.quiz-box #question {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    border: 1px solid #777;
+    border-width: 1px 0;
+    padding: 5px 0;
+}
+
+.buttons {
+    margin: 1.5rem 0 4rem 0;
+}
+
+.btn {
+    text-align: left;
+    background-color: #ddd;
+    width: 100%;
+    font-size: 1.8rem;
+    color: var(--black);
+    border: 1px solid var(--color-primary);
+    border-radius: 5px;
+    margin: 7px 0;
+    padding: 1rem;
+    outline: none;
+}
+
+.btn:hover {
+    cursor: pointer;
+    background-color: var(--color-primary);
+    color: #fff;
+}
+
+.btn:active {
+    background-color: var(--color-sec);
+}
+
+#score {
+    color: var(--black);
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 4rem;
+}
+
+.quiz-repeat { 
+    text-align: center;
+    margin: 0 auto;
+}
+
+.quiz-repeat a {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #fff;
+    text-decoration: none;
+    background-color: var(--color-primary);
+    padding: 1rem;
+    border-radius: 5px;
+    transition: all .3s;
+}
+
+.quiz-repeat a:hover {
+    background-color: var(--color-primary);
+}
